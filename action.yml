@@ -1,0 +1,21 @@
+name: 'Generate SBoM for Elixir project'
+description: 'Generate Software Bill-of-Material for Mix projects'
+author: 'Hauleth'
+inputs:
+  output:
+    description: 'Name of the generated file [defaults to "bom.xml"]'
+    required: false
+    default: 'bom.xml'
+  include_dev:
+    description: 'Whether generated SBoM should include development dependencties [defaults to false]'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.output }}
+    - ${{ inputs.include_dev }}
+branding:
+  icon: 'list'
+  color: 'orange'

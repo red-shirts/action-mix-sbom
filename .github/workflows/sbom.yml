@@ -1,0 +1,19 @@
+name: sbom
+on: push
+jobs:
+  sbom:
+    name: runner / sbom
+    runs-on: ubuntu-latest
+    container:
+      image: elixir:1.9.4-slim
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: |
+          mix do local.hex --force, local.rebar --force
+          mix do deps.get, deps.compile
+      - name: sbom
+        uses: ./
+      - name: Check SBoM
+        run: |
+          cat bom.xml
