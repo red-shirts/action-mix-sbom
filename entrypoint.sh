@@ -7,4 +7,4 @@ then
     FLAGS="$FLAGS -d"
 fi
 
-mix sbom.cyclonedx -o "${INPUT_OUTPUT:-bom.xml}" ${FLAGS} -rf
+mix sbom.cyclonedx -o "${INPUT_OUTPUT:-bom.xml}" ${FLAGS} -f
